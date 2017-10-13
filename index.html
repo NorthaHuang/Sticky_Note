@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Note</title>
+
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="css/main.css" />
+
+    <!--========== Vue ==========-->
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <main id="app">
+        <div class="note" 
+            v-for="(n, idx) in note"
+            :style="noteCss(n)"
+            @mousedown="selectId(idx)">
+            <p>{{n.text}}</p>
+        </div>
+
+        <ul class="datalist">
+            <p></p>
+            <li v-for="(n, idx) in note">
+                <input type="text" v-model="n.text">
+                <input type="text" v-model="n.color">
+            </li>
+        </ul>
+    </main>
+
+
+    <!--========== Javascript ==========-->
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+
+</html>

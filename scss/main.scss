@@ -1,0 +1,44 @@
+/**
+* Author: Northa Huang
+* Github: https://github.com/NorthaHuang
+* Website: https://northahuang.github.io/
+*/
+
+@charset "utf-8";
+@import "_reset";
+@import "_variable";
+@import "_base";
+@import "_mixin";
+
+
+
+
+
+/*==================================================
+                    Constructure
+==================================================*/
+.note{
+    @include size(240px);
+    padding: 10px;
+    transition: background-color .5s;
+    border-radius: 3px;
+    box-shadow: 15px 10px 40px rgba(black, .4);
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: $colorY;
+    position: absolute;
+
+    p{
+        pointer-events: none;
+        color: #535353;
+    }
+}
+
+.datalist{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
