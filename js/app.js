@@ -6,8 +6,8 @@ var config = {
     projectId: "stickynote-a760c",
     storageBucket: "stickynote-a760c.appspot.com",
     messagingSenderId: "923763380313"
-};
-firebase.initializeApp(config);
+}
+firebase.initializeApp(config)
 
 var fireNoteRef = firebase.database().ref('note')
 fireNoteRef.on('value', function(snapshot){
@@ -18,7 +18,7 @@ var vm = new Vue({
     el: '#app',
 
     data: {
-        // 色彩名稱 MAP
+        // 色票 MAP
         colorList: [
             {
                 name: 'yellow',
@@ -38,18 +38,8 @@ var vm = new Vue({
             }
         ],
 
-        // 便利貼
-        note: [
-            {
-                text: '生日快樂',
-                color: 'yellow',
-                pos: { x: 10, y: 10 }
-            }, {
-                text: '放假',
-                color: 'red',
-                pos: { x: 300, y: 300 }
-            }
-        ],
+        // 便利貼資料容器
+        note: [],
 
         nowId: -1,
         mousePos: { x: 0, y: 0 },
@@ -71,8 +61,13 @@ var vm = new Vue({
     methods: {
         // 背景顏色
         noteCss(n) {
+            var fzTemp = 240 / n.text.length - 10
+
+            fzTemp = fzTemp > 20 ? fzTemp : 20
+            console.log(fzTemp)
+
             return {
-                fontSize: 240 / n.text.length - 10 + 'px',
+                fontSize: fzTemp + 'px',
                 backgroundColor: this.colorList.find(temp => temp.name === n.color).color,
                 top: n.pos.y + 'px',
                 left: n.pos.x + 'px'
@@ -103,8 +98,8 @@ var vm = new Vue({
                 text: '文字',
                 color: 'yellow',
                 pos: { 
-                    x: 200+Math.random() * 200, 
-                    y: 200+Math.random() * 200
+                    x: Math.random() * 200, 
+                    y: Math.random() * 200
                 }
             })
         },
@@ -117,6 +112,14 @@ var vm = new Vue({
             var text = prompt('請輸入新的文字：', this.note[idx].text)
 
             if(text) this.note[idx].text = text
+
+            fireNoteRef.child(idx).set(this.note[idx])
+        },
+
+        setColor(idx, colorName) {
+            this.note[idx].color = colorName
+
+            fireNoteRef.child(idx).set(this.note[idx])
         }
     }
 }) /*===== View Model END =====*/
