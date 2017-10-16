@@ -84,7 +84,8 @@
 
         background-color: transparent;
         position: fixed;
-        top: 40px; right: 20px;
+        top: 40px;
+        left: 0; right: 0;
 
         &:before, &:after{
             @include pseudo();

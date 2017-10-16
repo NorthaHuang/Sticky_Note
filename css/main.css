@@ -204,7 +204,8 @@ img {
   background-color: transparent;
   position: fixed;
   top: 40px;
-  right: 20px; }
+  left: 0;
+  right: 0; }
   .datalist button:before, .datalist button:after {
     content: "";
     display: block;
