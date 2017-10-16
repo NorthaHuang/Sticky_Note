@@ -64,7 +64,6 @@ var vm = new Vue({
             var fzTemp = 240 / n.text.length - 10
 
             fzTemp = fzTemp > 20 ? fzTemp : 20
-            console.log(fzTemp)
 
             return {
                 fontSize: fzTemp + 'px',
