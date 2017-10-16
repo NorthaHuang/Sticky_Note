@@ -10,7 +10,6 @@
     <meta property="og:url" content="https://northahuang.github.io/Sticky_Note/index.html">
     <meta property="og:title" content="即時便利貼">
     <meta property="og:description" content="Vue & Firebase 初體驗">
-    <meta property="og:image" content="https://northahuang.github.io/Sticky_Note/images/share.png">
 
     <!--========== CSS ==========-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -24,6 +23,8 @@
 </head>
 
 <body>
+    <img src="images/share.png" style="position: absolute; z-index: -1; opacity: 0;">
+
     <main id="app">
         <transition-group name="fade" tag="ul" class="note-wrap">
             <li class="note" 
