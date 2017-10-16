@@ -84,7 +84,7 @@
 
         background-color: transparent;
         position: fixed;
-        top: 40px;
+        top: 20px;
         left: 0; right: 0;
 
         &:before, &:after{
@@ -95,7 +95,7 @@
 
             background-color: rgba(white, .2);
             position: absolute;
-            top: 0; left: 0;
+            top: 18px; left: 0;
         }
 
         &:after{

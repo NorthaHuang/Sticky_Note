@@ -203,7 +203,7 @@ img {
   border: 0;
   background-color: transparent;
   position: fixed;
-  top: 40px;
+  top: 20px;
   left: 0;
   right: 0; }
   .datalist button:before, .datalist button:after {
@@ -217,7 +217,7 @@ img {
     transition: background-color .4s;
     background-color: rgba(255, 255, 255, 0.2);
     position: absolute;
-    top: 0;
+    top: 18px;
     left: 0; }
   .datalist button:after {
     -webkit-transform: rotate(90deg);
