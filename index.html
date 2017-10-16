@@ -7,33 +7,58 @@
     <title>Sticky Note</title>
 
     <!--========== CSS ==========-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css" />
 
     <!--========== Vue ==========-->
     <script src="https://unpkg.com/vue"></script>
+
+    <!--========== Firebase ==========-->
+    <script src="https://www.gstatic.com/firebasejs/4.5.1/firebase.js"></script>
 </head>
 
 <body>
     <main id="app">
-        <div class="note" 
-            v-for="(n, idx) in note"
-            :style="noteCss(n)"
-            @mousedown="selectId(idx)">
-            <p>{{n.text}}</p>
-        </div>
+        <transition-group name="fade" tag="ul" class="note-wrap">
+            <li class="note" 
+                v-for="(n, idx) in note"
+                :key="idx"
+                :style="noteCss(n)"
+                @mousedown="selectId($event, idx)">
+                <p>{{n.text}}</p>
+
+                <div class="colorList">
+                    <div class="block" 
+                    v-for="color in colorList"
+                    :style="{ backgroundColor: color.color}"
+                    @click="n.color=color.name"></div>
+                    <button class="btn fa fa-pencil" @click="setText(idx)"></button>
+                    <button class="btn fa fa-trash-o" @click="deleteNote(idx)"></button>
+                </div>
+            </li>
+        </transition-group>
 
         <ul class="datalist">
-            <p></p>
+            <p>{{nowId}}</p>
             <li v-for="(n, idx) in note">
                 <input type="text" v-model="n.text">
                 <input type="text" v-model="n.color">
+
+                <!-- <div class="colorList">
+                    <div class="block" 
+                    v-for="color in colorList"
+                    :style="{ backgroundColor: color.color}"
+                    @click="n.color=color.name"></div>
+                    <button @click="note.splice(idx, 1)">刪除</button>
+                </div> -->
             </li>
+            <button @click="addNote">新增便利貼</button>
         </ul>
     </main>
 
 
     <!--========== Javascript ==========-->
-    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
 </body>
 
 </html>

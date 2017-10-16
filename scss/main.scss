@@ -17,9 +17,11 @@
 /*==================================================
                     Constructure
 ==================================================*/
+
 .note{
     @include size(240px);
     padding: 10px;
+    cursor: move;
     transition: background-color .5s;
     border-radius: 3px;
     box-shadow: 15px 10px 40px rgba(black, .4);
@@ -35,10 +37,83 @@
         pointer-events: none;
         color: #535353;
     }
+
+    .colorList {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        position: absolute;
+        bottom: -40px; left: 0;
+        
+        button{
+            @include size(30px);
+            padding: 0;
+            margin-right: 10px;
+            border: 0;
+            font-size: 20px;
+            text-align: center;
+
+            &:last-child{
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+.block{
+    @include size(20px);
+    margin-right: 10px;
+    cursor: pointer;
+
+    vertical-align: middle;
+    display: inline-block;
+    background-color: white;
 }
 
 .datalist{
     position: absolute;
     top: 20px;
     right: 20px;
+
+    li{
+        input{
+            margin: 10px auto;
+            
+            vertical-align: middle;
+            display: inline-block;
+        }
+    }
+
+    
+
+    p{
+        color: white;
+        font-size: 40px;
+        font-weight: bold;
+    }
+
+    button{
+        margin: 10px auto;
+    }
+}
+
+.colorList{
+    button{
+        margin: 0;
+        display: inline-block;
+    }
+}
+
+
+
+button{
+    cursor: pointer;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: all .2s
+}
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+    transform: scale(.1);
 }
